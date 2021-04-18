@@ -160,8 +160,9 @@ namespace DLLFixer
                         comboBox1.Items.Add("3RD PERSON");
                         comboBox1.Items.Add("BUMP POSSESSION");
                         comboBox1.Items.Add("PAN CAM");
-                        comboBox1.Items.Add("JET PACK");
+                       // comboBox1.Items.Add("JET PACK");
                         comboBox1.Items.Add("MEDUSA");
+                        comboBox1.Items.Add("WIREFRAME");
                         break;
                     }
                 case "groundhog":
@@ -212,27 +213,31 @@ namespace DLLFixer
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //outputLog.Clear();
+            outputLog.Clear();
             int index = tabControl1.SelectedIndex;
             tabControl1.TabPages[index].Controls.Add(Poke);
             tabControl1.TabPages[index].Controls.Add(UnPoke);
             tabControl1.TabPages[index].Controls.Add(refresh);
             tabControl1.TabPages[index].Controls.Add(outputLog);
             tabControl1.TabPages[index].Controls.Add(comboBox1);
-            UpdateModules();
-            UpdateAddresses();
+            RefreshProc();
         }
 
         private void Save_Click(object sender, EventArgs e)
         {
             string game = tabControl1.SelectedTab.Name + ".dll";
-            File.WriteAllBytes(Application.StartupPath + "\\Saved\\" + game, RP.SaveBytes(game));
+            //RP.SaveBytes(game);
+            //File.WriteAllBytes(Application.StartupPath + "\\Saved\\" + game, RP.SaveBytes(game));
         }
-
-        private void refresh_Click(object sender, EventArgs e)
+        private void RefreshProc()
         {
             UpdateModules();
             UpdateAddresses();
+            //RP.HexFile = "";
+        }
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            RefreshProc();
         }
 
         private void HaloDLLFixer_Load(object sender, EventArgs e)
