@@ -1,6 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using System.Diagnostics;
 using Memory;
 
@@ -85,13 +92,6 @@ namespace DLLFixer
         }
         private void AttachToProcess()
         {
-            //EAC check
-            if (CheckForEAC())
-            {
-                //EAC is running, cannot attach, return.
-                MessageBox.Show("EAC is running");
-                return;
-            }
             try
             {
                 p = Process.GetProcessesByName("MCC-Win64-Shipping")[0];
@@ -160,9 +160,8 @@ namespace DLLFixer
                         comboBox1.Items.Add("3RD PERSON");
                         comboBox1.Items.Add("BUMP POSSESSION");
                         comboBox1.Items.Add("PAN CAM");
-                       // comboBox1.Items.Add("JET PACK");
+                        comboBox1.Items.Add("JET PACK");
                         comboBox1.Items.Add("MEDUSA");
-                        comboBox1.Items.Add("WIREFRAME");
                         break;
                     }
                 case "groundhog":
@@ -208,56 +207,32 @@ namespace DLLFixer
             LoadList(tabControl1.SelectedTab.Name);
             if (attached)
             {
-                RP.ModuleName = tabControl1.SelectedTab.Name + ".dll";
-                if (!RP.InGameBGW.IsBusy)
-                {
-                    //status.Text = "Getting addresses...";
-                    RP.InGameBGW.RunWorkerAsync();
-                }
-                else
-                {
-                    RP.InGameBGW.CancelAsync();
-                }
+                RP.GetModule(tabControl1.SelectedTab.Name + ".dll");
             }
-        }
-        private bool CheckForEAC()
-        {
-
-            if (Process.GetProcessesByName("EasyAntiCheat").Length > 0)
-            {
-                return true;
-            }
-            return false;
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            outputLog.Clear();
-            status.Text = "";
+            //outputLog.Clear();
             int index = tabControl1.SelectedIndex;
             tabControl1.TabPages[index].Controls.Add(Poke);
             tabControl1.TabPages[index].Controls.Add(UnPoke);
             tabControl1.TabPages[index].Controls.Add(refresh);
             tabControl1.TabPages[index].Controls.Add(outputLog);
             tabControl1.TabPages[index].Controls.Add(comboBox1);
-            if (MCCMemory.theProc != null)
-            {
-                RefreshProc();
-            }
+            UpdateModules();
+            UpdateAddresses();
         }
 
         private void Save_Click(object sender, EventArgs e)
         {
             string game = tabControl1.SelectedTab.Name + ".dll";
+            File.WriteAllBytes(Application.StartupPath + "\\Saved\\" + game, RP.SaveBytes(game));
         }
-        private void RefreshProc()
+
+        private void refresh_Click(object sender, EventArgs e)
         {
             UpdateModules();
             UpdateAddresses();
-            //RP.HexFile = "";
-        }
-        private void refresh_Click(object sender, EventArgs e)
-        {
-            RefreshProc();
         }
 
         private void HaloDLLFixer_Load(object sender, EventArgs e)
@@ -270,12 +245,6 @@ namespace DLLFixer
         {
             About about = new About();
             about.ShowDialog();
-        }
-
-        private void openPatchesFolderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string path = Application.StartupPath + "\\Patches";
-            Process.Start("explorer.exe",path);
         }
     }
 }

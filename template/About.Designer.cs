@@ -50,7 +50,7 @@ namespace DLLFixer
             this.CloseForm.HoveredState.Parent = this.CloseForm;
             this.CloseForm.IconColor = System.Drawing.Color.White;
             this.CloseForm.Location = new System.Drawing.Point(299, 0);
-            this.CloseForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CloseForm.Margin = new System.Windows.Forms.Padding(2);
             this.CloseForm.Name = "CloseForm";
             this.CloseForm.ShadowDecoration.Parent = this.CloseForm;
             this.CloseForm.Size = new System.Drawing.Size(34, 24);
@@ -66,7 +66,7 @@ namespace DLLFixer
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "DLLFixer v1.0.0.3";
+            this.label1.Text = "DLLFixer v1.0.0.1";
             // 
             // label2
             // 
@@ -118,10 +118,10 @@ namespace DLLFixer
             this.DragPanel.Controls.Add(this.CloseForm);
             this.DragPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.DragPanel.Location = new System.Drawing.Point(0, 0);
-            this.DragPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DragPanel.Margin = new System.Windows.Forms.Padding(2);
             this.DragPanel.Name = "DragPanel";
             this.DragPanel.ShadowDecoration.Parent = this.DragPanel;
-            this.DragPanel.Size = new System.Drawing.Size(335, 115);
+            this.DragPanel.Size = new System.Drawing.Size(335, 32);
             this.DragPanel.TabIndex = 7;
             // 
             // siticoneDragControl1

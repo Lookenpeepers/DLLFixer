@@ -1,19 +1,23 @@
-﻿namespace DLLFixer
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DLLFixer
 {
     public static class Games
     {
         public struct HaloCE
         {
+            public static int fileSize = 29179304;
             public static string InGameAOB = "64 61 65 68 07 00 00 00 ??";
             public static string ThirdPersonMask = "0F 85 80 00 00 00 48 8B 05 4C B3 F4 01 48 8D 54 24 48 49 6B CE 54 8B 4C 01 10 E8 2A FB FF FF 66 83 F8 01 75";
             public static string ThirdPersonPokedMask = "90 90 90 90 90 90 48 8B 05 4C B3 F4 01 48 8D 54 24 48 49 6B CE 54 8B 4C 01 10 E8 2A FB FF FF 66 05 01 00 74";
-            public static string BumpPossessionMask = "74 20 41 8B CC E8 EE 26";
-            public static string BumpPossessionPokedMask = "75 20 41 8B CC E8 EE 26";
-            public static string MedusaMask = "74 0D 41 B0 01 33 D2 41 8B CE E8";
-            public static string MedusaPokedMask = "75 0D 41 B0 01 33 D2 41 8B CE E8";
-            public static string PanCamMask = "00 00 00 68 39 ?? ?? ?? ?? 00 00 E0 3B ?? ?? ??";
-            public static string PanCamPokedMask = "01 00 00 68 39 ?? ?? ?? ?? 00 00 E0 3B ?? ?? ??";
-            public static string WireframeMask = "?? ?? ?? ?? ?? ?? 00 00 00 00 2C 00 04";
+            public static string BumpPossessionMask = "B4 57 42 E7 75 02";
+            public static string BumpPossessionPokedMask = "B4 57 42 E7 75 02";
+            public static string PanCamMask = "00 00 00 68 39 4F E7 75 02 00 00";
+            public static string PanCamPokedMask = "01 00 00 68 39 4F E7 75 02 00 00";
         }
         public struct Halo2A
         {
@@ -26,9 +30,10 @@
         }
         public struct Halo3
         {
-            public static string InGameAOB = "64 61 65 68 0B 00 00 00 00 ?? ?? ?? 00 00 00 00 ?? ?? ?? ?? ?? 7F 00 00 00 ?? ?? ?? 00 00 ?? 03 68 61 6C 6F 33 5C 6D 61 70 73";
-            public static string AIMask = "F6 00 01 0F 84 ?? 00 00 00 F3 0F 10 0D";
-            public static string AIPokedMask = "F6 00 01 90 84 ?? 00 00 00 F3 0F 10 0D";
+            public static int fileSize = 10857896;
+            public static string InGameAOB = "64 61 65 68 0B 00 00 00 00 ?? ?? ?? 00 00 00 00 ?? ?? ?? ?? F4 7F 00 00 00 ?? ?? ?? 00 00 ?? 03 68 61 6C 6F 33 5C 6D 61 70 73";
+            public static string AIMask = "F6 00 01 0F 84 ?? 00 00 00 F3 0F";
+            public static string AIPokedMask = "F6 00 01 90 84 ?? 00 00 00 F3 0F";
             public static string ThirdPersonMask = "74 0E 44 8D 52 03";
             public static string ThirdPersonPokedMask = "90 90 44 8D 52 03";
         }

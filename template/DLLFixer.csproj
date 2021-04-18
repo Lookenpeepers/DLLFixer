@@ -7,7 +7,7 @@
     <ProjectGuid>{E07D3661-54C2-49F8-948E-2E7EFD1875CC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>DLLFixer</RootNamespace>
-    <AssemblyName>HaloDLLFixer</AssemblyName>
+    <AssemblyName>DLLFixer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -51,27 +51,24 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>t_im_difficultylargelegendary_jB0_icon.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="HTAlt WinForms, Version=0.1.6.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Desktop\HTAlt WinForms.dll</HintPath>
+      <HintPath>..\packages\HTAlt.WinForms.0.1.6.4\lib\net461\HTAlt WinForms.dll</HintPath>
     </Reference>
     <Reference Include="HTAlt.Standart, Version=0.1.6.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Desktop\HTAlt.Standart.dll</HintPath>
+      <HintPath>..\packages\HTAlt.Standart.0.1.6.4\lib\netstandard2.0\HTAlt.Standart.dll</HintPath>
     </Reference>
     <Reference Include="Memory, Version=1.2.21.0, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\..\..\..\Desktop\Memory.dll</HintPath>
+      <HintPath>..\packages\Memory.dll.x64.1.2.21\lib\netstandard2.0\Memory.dll</HintPath>
     </Reference>
     <Reference Include="Siticone.UI">
-      <HintPath>..\..\..\..\Desktop\Siticone.UI.dll</HintPath>
+      <HintPath>..\..\HaloPogSwitch\Dlls\Siticone.UI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Desktop\System.Drawing.Common.dll</HintPath>
+      <HintPath>..\packages\System.Drawing.Common.5.0.2\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -152,12 +149,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\images.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\images1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="t_im_difficultylargelegendary_jB0_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

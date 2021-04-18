@@ -30,26 +30,16 @@ namespace DLLFixer
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HaloDLLFixer));
             this.tabControl1 = new HTAlt.WinForms.HTTabControl();
-            this.halo1 = new System.Windows.Forms.TabPage();
-            this.status = new System.Windows.Forms.Label();
-            this.refresh = new Siticone.UI.WinForms.SiticoneButton();
-            this.comboBox1 = new Siticone.UI.WinForms.SiticoneComboBox();
-            this.Poke = new Siticone.UI.WinForms.SiticoneButton();
-            this.outputLog = new System.Windows.Forms.RichTextBox();
-            this.UnPoke = new Siticone.UI.WinForms.SiticoneButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groundhog = new System.Windows.Forms.TabPage();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.outputLog = new System.Windows.Forms.RichTextBox();
+            this.comboBox1 = new Siticone.UI.WinForms.SiticoneComboBox();
+            this.UnPoke = new Siticone.UI.WinForms.SiticoneButton();
+            this.Poke = new Siticone.UI.WinForms.SiticoneButton();
             this.halo3 = new System.Windows.Forms.TabPage();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.halo3odst = new System.Windows.Forms.TabPage();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.haloreach = new System.Windows.Forms.TabPage();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.halo4 = new System.Windows.Forms.TabPage();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.DragPanel = new Siticone.UI.WinForms.SiticonePanel();
             this.Halo_DLLFixer = new System.Windows.Forms.Label();
             this.MinimizeForm = new Siticone.UI.WinForms.SiticoneControlBox();
@@ -59,26 +49,18 @@ namespace DLLFixer
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.attachToProcessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openPatchesFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siticoneDragControl2 = new Siticone.UI.WinForms.SiticoneDragControl(this.components);
             this.siticonePanel1 = new Siticone.UI.WinForms.SiticonePanel();
             this.About = new Siticone.UI.WinForms.SiticoneButton();
+            this.refresh = new Siticone.UI.WinForms.SiticoneButton();
+            this.halo1 = new System.Windows.Forms.TabPage();
+            this.status = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
-            this.halo1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groundhog.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.halo3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.halo3odst.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.haloreach.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.halo4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.DragPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.siticonePanel1.SuspendLayout();
+            this.halo1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -115,52 +97,30 @@ namespace DLLFixer
             this.tabControl1.UpDownTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // halo1
+            // groundhog
             // 
-            this.halo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.halo1.Controls.Add(this.status);
-            this.halo1.Controls.Add(this.refresh);
-            this.halo1.Controls.Add(this.comboBox1);
-            this.halo1.Controls.Add(this.Poke);
-            this.halo1.Controls.Add(this.outputLog);
-            this.halo1.Controls.Add(this.UnPoke);
-            this.halo1.Controls.Add(this.pictureBox1);
-            this.halo1.Location = new System.Drawing.Point(4, 29);
-            this.halo1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.halo1.Name = "halo1";
-            this.halo1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.halo1.Size = new System.Drawing.Size(444, 170);
-            this.halo1.TabIndex = 5;
-            this.halo1.Text = "Halo CE";
+            this.groundhog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.groundhog.ForeColor = System.Drawing.Color.White;
+            this.groundhog.Location = new System.Drawing.Point(4, 29);
+            this.groundhog.Margin = new System.Windows.Forms.Padding(2);
+            this.groundhog.Name = "groundhog";
+            this.groundhog.Padding = new System.Windows.Forms.Padding(2);
+            this.groundhog.Size = new System.Drawing.Size(444, 170);
+            this.groundhog.TabIndex = 0;
+            this.groundhog.Text = "Halo 2A";
             // 
-            // status
+            // outputLog
             // 
-            this.status.AutoSize = true;
-            this.status.ForeColor = System.Drawing.Color.White;
-            this.status.Location = new System.Drawing.Point(190, 60);
-            this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(0, 15);
-            this.status.TabIndex = 5;
-            // 
-            // refresh
-            // 
-            this.refresh.BorderColor = System.Drawing.Color.Gray;
-            this.refresh.BorderRadius = 1;
-            this.refresh.BorderThickness = 2;
-            this.refresh.CheckedState.Parent = this.refresh;
-            this.refresh.CustomImages.Parent = this.refresh;
-            this.refresh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.refresh.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.refresh.ForeColor = System.Drawing.Color.White;
-            this.refresh.HoveredState.Parent = this.refresh;
-            this.refresh.Location = new System.Drawing.Point(191, 4);
-            this.refresh.Margin = new System.Windows.Forms.Padding(2);
-            this.refresh.Name = "refresh";
-            this.refresh.ShadowDecoration.Parent = this.refresh;
-            this.refresh.Size = new System.Drawing.Size(82, 36);
-            this.refresh.TabIndex = 4;
-            this.refresh.Text = "Refresh";
-            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            this.outputLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.outputLog.Font = new System.Drawing.Font("Courier New", 9F);
+            this.outputLog.ForeColor = System.Drawing.Color.White;
+            this.outputLog.Location = new System.Drawing.Point(-4, 80);
+            this.outputLog.Margin = new System.Windows.Forms.Padding(2);
+            this.outputLog.Name = "outputLog";
+            this.outputLog.ReadOnly = true;
+            this.outputLog.Size = new System.Drawing.Size(451, 93);
+            this.outputLog.TabIndex = 3;
+            this.outputLog.Text = "";
             // 
             // comboBox1
             // 
@@ -187,39 +147,6 @@ namespace DLLFixer
             this.comboBox1.StartIndex = 0;
             this.comboBox1.TabIndex = 2;
             // 
-            // Poke
-            // 
-            this.Poke.BorderColor = System.Drawing.Color.Gray;
-            this.Poke.BorderRadius = 1;
-            this.Poke.BorderThickness = 2;
-            this.Poke.CheckedState.Parent = this.Poke;
-            this.Poke.CustomImages.Parent = this.Poke;
-            this.Poke.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Poke.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Poke.ForeColor = System.Drawing.Color.White;
-            this.Poke.HoveredState.Parent = this.Poke;
-            this.Poke.Location = new System.Drawing.Point(5, 46);
-            this.Poke.Margin = new System.Windows.Forms.Padding(2);
-            this.Poke.Name = "Poke";
-            this.Poke.ShadowDecoration.Parent = this.Poke;
-            this.Poke.Size = new System.Drawing.Size(82, 29);
-            this.Poke.TabIndex = 0;
-            this.Poke.Text = "Poke DLLs";
-            this.Poke.Click += new System.EventHandler(this.PokeDLLs_Click);
-            // 
-            // outputLog
-            // 
-            this.outputLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.outputLog.Font = new System.Drawing.Font("Courier New", 9F);
-            this.outputLog.ForeColor = System.Drawing.Color.White;
-            this.outputLog.Location = new System.Drawing.Point(-4, 80);
-            this.outputLog.Margin = new System.Windows.Forms.Padding(2);
-            this.outputLog.Name = "outputLog";
-            this.outputLog.ReadOnly = true;
-            this.outputLog.Size = new System.Drawing.Size(451, 93);
-            this.outputLog.TabIndex = 3;
-            this.outputLog.Text = "";
-            // 
             // UnPoke
             // 
             this.UnPoke.BorderColor = System.Drawing.Color.Gray;
@@ -240,47 +167,29 @@ namespace DLLFixer
             this.UnPoke.Text = "UnPoke";
             this.UnPoke.Click += new System.EventHandler(this.UnPoke_Click);
             // 
-            // pictureBox1
+            // Poke
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(284, 13);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(144, 51);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // groundhog
-            // 
-            this.groundhog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.groundhog.Controls.Add(this.pictureBox2);
-            this.groundhog.ForeColor = System.Drawing.Color.White;
-            this.groundhog.Location = new System.Drawing.Point(4, 29);
-            this.groundhog.Margin = new System.Windows.Forms.Padding(2);
-            this.groundhog.Name = "groundhog";
-            this.groundhog.Padding = new System.Windows.Forms.Padding(2);
-            this.groundhog.Size = new System.Drawing.Size(444, 170);
-            this.groundhog.TabIndex = 0;
-            this.groundhog.Text = "Halo 2A";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(284, 13);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(144, 51);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.Poke.BorderColor = System.Drawing.Color.Gray;
+            this.Poke.BorderRadius = 1;
+            this.Poke.BorderThickness = 2;
+            this.Poke.CheckedState.Parent = this.Poke;
+            this.Poke.CustomImages.Parent = this.Poke;
+            this.Poke.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Poke.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Poke.ForeColor = System.Drawing.Color.White;
+            this.Poke.HoveredState.Parent = this.Poke;
+            this.Poke.Location = new System.Drawing.Point(5, 46);
+            this.Poke.Margin = new System.Windows.Forms.Padding(2);
+            this.Poke.Name = "Poke";
+            this.Poke.ShadowDecoration.Parent = this.Poke;
+            this.Poke.Size = new System.Drawing.Size(82, 29);
+            this.Poke.TabIndex = 0;
+            this.Poke.Text = "Poke DLLs";
+            this.Poke.Click += new System.EventHandler(this.PokeDLLs_Click);
             // 
             // halo3
             // 
             this.halo3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.halo3.Controls.Add(this.pictureBox3);
             this.halo3.ForeColor = System.Drawing.Color.White;
             this.halo3.Location = new System.Drawing.Point(4, 29);
             this.halo3.Margin = new System.Windows.Forms.Padding(2);
@@ -290,22 +199,9 @@ namespace DLLFixer
             this.halo3.TabIndex = 1;
             this.halo3.Text = "Halo 3";
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(284, 13);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(144, 51);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
             // halo3odst
             // 
             this.halo3odst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.halo3odst.Controls.Add(this.pictureBox4);
             this.halo3odst.ForeColor = System.Drawing.Color.White;
             this.halo3odst.Location = new System.Drawing.Point(4, 29);
             this.halo3odst.Margin = new System.Windows.Forms.Padding(2);
@@ -314,22 +210,9 @@ namespace DLLFixer
             this.halo3odst.TabIndex = 2;
             this.halo3odst.Text = "Halo ODST";
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(284, 8);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(155, 63);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            // 
             // haloreach
             // 
             this.haloreach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.haloreach.Controls.Add(this.pictureBox5);
             this.haloreach.ForeColor = System.Drawing.Color.White;
             this.haloreach.Location = new System.Drawing.Point(4, 29);
             this.haloreach.Margin = new System.Windows.Forms.Padding(2);
@@ -338,22 +221,9 @@ namespace DLLFixer
             this.haloreach.TabIndex = 3;
             this.haloreach.Text = "Halo Reach";
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(284, 8);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(155, 63);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
-            // 
             // halo4
             // 
             this.halo4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.halo4.Controls.Add(this.pictureBox6);
             this.halo4.ForeColor = System.Drawing.Color.White;
             this.halo4.Location = new System.Drawing.Point(4, 29);
             this.halo4.Margin = new System.Windows.Forms.Padding(2);
@@ -361,18 +231,6 @@ namespace DLLFixer
             this.halo4.Size = new System.Drawing.Size(444, 170);
             this.halo4.TabIndex = 4;
             this.halo4.Text = "Halo 4";
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(284, 13);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(144, 51);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
             // 
             // DragPanel
             // 
@@ -456,7 +314,7 @@ namespace DLLFixer
             // 
             this.fileToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.attachToProcessToolStripMenuItem,
-            this.openPatchesFolderToolStripMenuItem});
+            this.saveToolStripMenuItem});
             this.fileToolStripMenuItem1.ForeColor = System.Drawing.Color.Black;
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
             this.fileToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
@@ -465,16 +323,16 @@ namespace DLLFixer
             // attachToProcessToolStripMenuItem
             // 
             this.attachToProcessToolStripMenuItem.Name = "attachToProcessToolStripMenuItem";
-            this.attachToProcessToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.attachToProcessToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.attachToProcessToolStripMenuItem.Text = "Attach To Process";
             this.attachToProcessToolStripMenuItem.Click += new System.EventHandler(this.attachToProcessToolStripMenuItem_Click);
             // 
-            // openPatchesFolderToolStripMenuItem
+            // saveToolStripMenuItem
             // 
-            this.openPatchesFolderToolStripMenuItem.Name = "openPatchesFolderToolStripMenuItem";
-            this.openPatchesFolderToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.openPatchesFolderToolStripMenuItem.Text = "Open Patches Folder";
-            this.openPatchesFolderToolStripMenuItem.Click += new System.EventHandler(this.openPatchesFolderToolStripMenuItem_Click);
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.Save_Click);
             // 
             // siticoneDragControl2
             // 
@@ -511,6 +369,52 @@ namespace DLLFixer
             this.About.Text = "About";
             this.About.Click += new System.EventHandler(this.About_Click);
             // 
+            // refresh
+            // 
+            this.refresh.BorderColor = System.Drawing.Color.Gray;
+            this.refresh.BorderRadius = 1;
+            this.refresh.BorderThickness = 2;
+            this.refresh.CheckedState.Parent = this.refresh;
+            this.refresh.CustomImages.Parent = this.refresh;
+            this.refresh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.refresh.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.refresh.ForeColor = System.Drawing.Color.White;
+            this.refresh.HoveredState.Parent = this.refresh;
+            this.refresh.Location = new System.Drawing.Point(191, 4);
+            this.refresh.Margin = new System.Windows.Forms.Padding(2);
+            this.refresh.Name = "refresh";
+            this.refresh.ShadowDecoration.Parent = this.refresh;
+            this.refresh.Size = new System.Drawing.Size(82, 36);
+            this.refresh.TabIndex = 4;
+            this.refresh.Text = "Refresh";
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
+            // halo1
+            // 
+            this.halo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.halo1.Controls.Add(this.status);
+            this.halo1.Controls.Add(this.refresh);
+            this.halo1.Controls.Add(this.comboBox1);
+            this.halo1.Controls.Add(this.Poke);
+            this.halo1.Controls.Add(this.outputLog);
+            this.halo1.Controls.Add(this.UnPoke);
+            this.halo1.Location = new System.Drawing.Point(4, 29);
+            this.halo1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.halo1.Name = "halo1";
+            this.halo1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.halo1.Size = new System.Drawing.Size(444, 170);
+            this.halo1.TabIndex = 5;
+            this.halo1.Text = "Halo CE";
+            // 
+            // status
+            // 
+            this.status.AutoSize = true;
+            this.status.ForeColor = System.Drawing.Color.White;
+            this.status.Location = new System.Drawing.Point(325, 60);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(0, 15);
+            this.status.TabIndex = 5;
+            // 
             // HaloDLLFixer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -522,32 +426,20 @@ namespace DLLFixer
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "HaloDLLFixer";
-            this.Text = "HaloDLLFixer";
+            this.Text = "DLLFixForAII";
             this.Load += new System.EventHandler(this.HaloDLLFixer_Load);
             this.Shown += new System.EventHandler(this.DLLFixForAI_Shown);
             this.tabControl1.ResumeLayout(false);
-            this.halo1.ResumeLayout(false);
-            this.halo1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groundhog.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.halo3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.halo3odst.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.haloreach.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.halo4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.DragPanel.ResumeLayout(false);
             this.DragPanel.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.siticonePanel1.ResumeLayout(false);
+            this.halo1.ResumeLayout(false);
+            this.halo1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -567,6 +459,7 @@ namespace DLLFixer
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem attachToProcessToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.Label Halo_DLLFixer;
         private Siticone.UI.WinForms.SiticoneDragControl siticoneDragControl2;
         private Siticone.UI.WinForms.SiticonePanel siticonePanel1;
@@ -579,13 +472,6 @@ namespace DLLFixer
         public Siticone.UI.WinForms.SiticoneButton refresh;
         private System.Windows.Forms.TabPage halo1;
         public System.Windows.Forms.Label status;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.ToolStripMenuItem openPatchesFolderToolStripMenuItem;
     }
 }
 
