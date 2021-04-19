@@ -102,8 +102,19 @@ namespace DLLFixer
             }
             catch
             {
-                MessageBox.Show("\nMake sure MCC is running");
-                //this.Close();
+                try
+                {
+                    p = Process.GetProcessesByName("MCCWinStore-Win64-Shipping")[0];
+                    MCCMemory.OpenProcess(p.Id);
+                    attachToProcessToolStripMenuItem.Text = "Detach from process";
+                    attached = true;
+                    RP = new RuntimePatcher(MCCMemory, this);
+                }
+                catch
+                {
+                    MessageBox.Show("\nMake sure MCC is running");
+                    //this.Close();
+                }
             }           
         }
         private void DetachFromProcess()
