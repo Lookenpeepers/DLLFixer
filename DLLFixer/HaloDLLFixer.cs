@@ -18,7 +18,7 @@ namespace DLLFixer
         }
         private void DLLFixForAI_Shown(object sender, EventArgs e)
         {
-            CheckForIllegalCrossThreadCalls = false;
+            //CheckForIllegalCrossThreadCalls = false;
             attachToProcessToolStripMenuItem.PerformClick();
             UpdateAddresses();
         }
@@ -98,13 +98,13 @@ namespace DLLFixer
                 MCCMemory.OpenProcess(p.Id);
                 attachToProcessToolStripMenuItem.Text = "Detach from process";
                 attached = true;
+                RP = new RuntimePatcher(MCCMemory, this);
             }
             catch
             {
                 MessageBox.Show("\nMake sure MCC is running");
                 //this.Close();
-            }
-            RP = new RuntimePatcher(MCCMemory, this);
+            }           
         }
         private void DetachFromProcess()
         {
@@ -205,18 +205,20 @@ namespace DLLFixer
         private void UpdateAddresses()
         {
             comboBox1.Items.Clear();
+           
             LoadList(tabControl1.SelectedTab.Name);
             if (attached)
             {
                 RP.ModuleName = tabControl1.SelectedTab.Name + ".dll";
-                if (!RP.InGameBGW.IsBusy)
+                if (!RP.InGameBGW.IsBusy && !RP.BGW.IsBusy)
                 {
-                    //status.Text = "Getting addresses...";
                     RP.InGameBGW.RunWorkerAsync();
                 }
                 else
                 {
                     RP.InGameBGW.CancelAsync();
+                    RP.BGW.CancelAsync();
+                    UpdateAddresses();
                 }
             }
         }
@@ -232,13 +234,14 @@ namespace DLLFixer
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             outputLog.Clear();
-            status.Text = "";
             int index = tabControl1.SelectedIndex;
             tabControl1.TabPages[index].Controls.Add(Poke);
             tabControl1.TabPages[index].Controls.Add(UnPoke);
             tabControl1.TabPages[index].Controls.Add(refresh);
             tabControl1.TabPages[index].Controls.Add(outputLog);
             tabControl1.TabPages[index].Controls.Add(comboBox1);
+            status.Text = "";
+            tabControl1.TabPages[index].Controls.Add(status);
             if (MCCMemory.theProc != null)
             {
                 RefreshProc();

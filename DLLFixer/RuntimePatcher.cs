@@ -12,7 +12,7 @@ namespace DLLFixer
 {
     public class RuntimePatcher
     {
-        BackgroundWorker BGW = new BackgroundWorker();
+        public BackgroundWorker BGW = new BackgroundWorker();
         public BackgroundWorker InGameBGW = new BackgroundWorker();
         Mem MCCMemory;
         HaloDLLFixer Main;
@@ -45,29 +45,104 @@ namespace DLLFixer
             BGW.DoWork += BGW_DoWork;
             BGW.RunWorkerCompleted += BGW_RunWorkerCompleted;
         }
-
+        private bool MCCDirExists = false;
+        private bool PatchDirExists = false;
+        private bool PatchFileExists = false;
         private void InGameBGW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             //Grabbed the game.
             if (InGame)
             {
+                //check if patch dir exists
+                if (PatchDirExists)
+                {
+                    if (MCCDirExists)
+                    {
+                        if (!PatchFileExists)
+                        {
+                            //file doesn't exist
+                            DialogResult DR = MessageBox.Show("Would you like to create a patch for this dll?", "", MessageBoxButtons.YesNo);
+                            if (DR == DialogResult.Yes)
+                            {
+                                string MCCfilepath = Properties.Settings.Default.MCCPath + "\\" + Game.Replace(".dll", "") + "\\" + Game;
+                                string fileName = Application.StartupPath + "\\Patches\\";
+                                if (File.Exists(MCCfilepath))
+                                {
+                                    //copy into patch folder
+                                    File.Copy(MCCfilepath, fileName + Game);
+                                    file = File.ReadAllBytes(fileName + Game);
+                                    HexFile = BitConverter.ToString(file).Replace("-", "");
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //prompt user to set MCC directory
+                        FolderBrowserDialog fbd = new FolderBrowserDialog();
+                        fbd.Description = "Set MCC root directory ie. (C:\\Program Files (x86)\\Steam\\steamapps\\common\\Halo The Master Chief Collection)";
+                        fbd.ShowDialog();
+                        string fileName = Application.StartupPath + "\\Patches\\";
+                        Properties.Settings.Default.MCCPath = fbd.SelectedPath;
+                        Properties.Settings.Default.Save();
+                        if (File.Exists(fileName + Game))
+                        {
+                            //read all bytes
+                            file = File.ReadAllBytes(fileName + Game);
+                            HexFile = BitConverter.ToString(file).Replace("-", "");
+                        }
+                        else
+                        {
+                            //file doesn't exist
+                            DialogResult DR = MessageBox.Show("Would you like to create a patch for this dll?", "", MessageBoxButtons.YesNo);
+                            if (DR == DialogResult.Yes)
+                            {
+                                string MCCfilepath = Properties.Settings.Default.MCCPath + "\\" + Game.Replace(".dll", "") + "\\" + Game;
+                                if (File.Exists(MCCfilepath))
+                                {
+                                    //copy into patch folder
+                                    File.Copy(MCCfilepath, Application.StartupPath + "\\Patches\\" + Game);
+                                    file = File.ReadAllBytes(fileName + Game);
+                                    HexFile = BitConverter.ToString(file).Replace("-", "");
+                                }
+                            }
+                        }
+                    }
+                }
                 Main.status.Text = "Getting addresses...";
+                if (!BGW.IsBusy)
+                {
+                    cbItems = Main.comboBox1.Items;
+                    gameName = Main.tabControl1.SelectedTab.Name + ".dll";
+                    BGW.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                Main.status.Text = "Not in game";
             }
         }
 
         private void InGameBGW_DoWork(object sender, DoWorkEventArgs e)
         {
+            MCCDirExists = false;
+            PatchDirExists = false;
+            PatchFileExists = false;
             GetModule(ModuleName);
         }
         public string ModuleName;
         private void BGW_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-           // Main.status.Text = "";
+            // Main.status.Text = "";
+            Log();
+            Main.Poke.Enabled = true;
+            Main.UnPoke.Enabled = true;
+            Main.outputLog.Text = output;
         }
-
+        private string gameName = "";
         private void BGW_DoWork(object sender, DoWorkEventArgs e)
         {
-            GetAddresses();
+            GetAddresses(gameName);
         }
         private int SearchAOB(string pattern)
         {
@@ -84,17 +159,17 @@ namespace DLLFixer
             return "[" + System.DateTime.Now.ToString() + "] ";
         }
         long baseAddr = 0;
-        private void GetAddresses()
+        ComboBox.ObjectCollection cbItems;
+        private void GetAddresses(string DLL)
         {
             output = "";
             addresses = new List<Address>();
             Address addr = new Address();
-            string DLL = Main.tabControl1.SelectedTab.Name + ".dll";
             switch (DLL)
             {
                 case "halo1.dll":
                     {
-                        foreach (string item in Main.comboBox1.Items)
+                        foreach (string item in cbItems)
                         {
                             addr.name = item;
                             switch (item)
@@ -232,7 +307,7 @@ namespace DLLFixer
                     }
                 case "groundhog.dll":
                     {
-                        foreach (string item in Main.comboBox1.Items)
+                        foreach (string item in cbItems)
                         {
                             addr.name = item;
                             switch (item)
@@ -285,7 +360,7 @@ namespace DLLFixer
                     }
                 case "halo3.dll":
                     {
-                        foreach (string item in Main.comboBox1.Items)
+                        foreach (string item in cbItems)
                         {
                             addr.name = item;
                             switch (item)
@@ -338,7 +413,7 @@ namespace DLLFixer
                     }
                 case "halo3odst.dll":
                     {
-                        foreach (string item in Main.comboBox1.Items)
+                        foreach (string item in cbItems)
                         {
                             addr.name = item;
                             switch (item)
@@ -391,7 +466,7 @@ namespace DLLFixer
                     }
                 case "haloreach.dll":
                     {
-                        foreach (string item in Main.comboBox1.Items)
+                        foreach (string item in cbItems)
                         {
                             addr.name = item;
                             switch (item)
@@ -507,7 +582,7 @@ namespace DLLFixer
                     }
                 case "halo4.dll":
                     {
-                        foreach (string item in Main.comboBox1.Items)
+                        foreach (string item in cbItems)
                         {
                             addr.name = item;
                             switch (item)
@@ -580,10 +655,6 @@ namespace DLLFixer
                         break;
                     }
             }
-            Log();
-            Main.Poke.Enabled = true;
-            Main.UnPoke.Enabled = true;
-            Main.outputLog.Text = output;
         }
         private void SetModule(ProcessModule Module)
         {
@@ -681,91 +752,31 @@ namespace DLLFixer
             if (gameFound)
             {
                 //CHECK IF IN GAME
-                Main.status.Text = "Checking if in game";
                 if (IsInGame())
                 {
-                    //Main.status.Text = "Getting addresses...";
                     string fileName = Application.StartupPath + "\\Patches\\";
                     InGame = true;
                     //check patch directory exists
                     if (Directory.Exists(fileName))
                     {
-                        //CHECK FOR MCC DIRECTORY FIRST
+                        PatchDirExists = true;
+                        //CHECK FOR MCC DIRECTORY
                         if (Directory.Exists(Properties.Settings.Default.MCCPath))
                         {
+                            MCCDirExists = true;
                             //check file exists
                             if (File.Exists(fileName + Game))
                             {
                                 //read all bytes
-                                file = File.ReadAllBytes(fileName + Game);
-                                HexFile = BitConverter.ToString(file).Replace("-", "");
-                            }
-                            else
-                            {
-                                //file doesn't exist
-                                DialogResult DR = MessageBox.Show("Would you like to create a patch for this dll?", "", MessageBoxButtons.YesNo);
-                                if (DR == DialogResult.Yes)
-                                {
-                                    string MCCfilepath = Properties.Settings.Default.MCCPath + "\\" + Game.Replace(".dll", "") + "\\" + Game;
-                                    if (File.Exists(MCCfilepath))
-                                    {
-                                        //copy into patch folder
-                                        File.Copy(MCCfilepath, Application.StartupPath + "\\Patches\\" + Game);
-                                        file = File.ReadAllBytes(fileName + Game);
-                                        HexFile = BitConverter.ToString(file).Replace("-", "");
-                                    }
-                                }
+                                PatchFileExists = true;
                             }
                         }
-                        else
-                        {
-                            //prompt user to set MCC directory
-                            FolderBrowserDialog fbd = new FolderBrowserDialog();
-                            fbd.Description = "Set MCC root directory ie. (C:\\Program Files (x86)\\Steam\\steamapps\\common\\Halo The Master Chief Collection)";
-                            fbd.ShowDialog();
-                            Properties.Settings.Default.MCCPath = fbd.SelectedPath;
-                            Properties.Settings.Default.Save();
-                            if (File.Exists(fileName + Game))
-                            {
-                                //read all bytes
-                                file = File.ReadAllBytes(fileName + Game);
-                                HexFile = BitConverter.ToString(file).Replace("-", "");
-                            }
-                            else
-                            {
-                                //file doesn't exist
-                                DialogResult DR = MessageBox.Show("Would you like to create a patch for this dll?", "", MessageBoxButtons.YesNo);
-                                if (DR == DialogResult.Yes)
-                                {
-                                    string MCCfilepath = Properties.Settings.Default.MCCPath + "\\" + Game.Replace(".dll", "") + "\\" + Game;
-                                    if (File.Exists(MCCfilepath))
-                                    {
-                                        //copy into patch folder
-                                        File.Copy(MCCfilepath, Application.StartupPath + "\\Patches\\" + Game);
-                                        file = File.ReadAllBytes(fileName + Game);
-                                        HexFile = BitConverter.ToString(file).Replace("-", "");
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (!BGW.IsBusy)
-                    {
-                        BGW.RunWorkerAsync();
                     }
                 }
                 else
                 {
                     InGame = false;
-                    Main.status.Text = "";
-                    Main.outputLog.Text = "Not in Game";
                 }
-            }
-            else
-            {
-                Main.outputLog.Text = (TimeStamp() + "Cannot find running instance of : " + name + "\n");
-                Main.Poke.Enabled = false;
-                Main.UnPoke.Enabled = false;
             }
         }
         private void PushToPatch(byte[] bytes, int off, string game, string Mask)
