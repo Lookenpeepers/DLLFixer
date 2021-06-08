@@ -26,7 +26,7 @@
         }
         public struct Halo3
         {
-            public static string InGameAOB = "64 61 65 68 0B 00 00 00 00 ?? ?? ?? 00 00 00 00 ?? ?? ?? ?? ?? 7F 00 00 00 ?? ?? ?? 00 00 ?? 03 68 61 6C 6F 33 5C 6D 61 70 73";
+            public static string InGameAOB = "64 61 65 68 0B 00 00 00 00 ?? ?? ?? 00 00 00 00 ?? ?? ?? ?? ?? 7F 00 00 00 ?? ?? ?? 00 00 ?? ?? 68 61 6C 6F 33 5C 6D 61 70 73";
             public static string AIMask = "F6 00 01 0F 84 ?? 00 00 00 F3 0F 10 0D";
             public static string AIPokedMask = "F6 00 01 90 84 ?? 00 00 00 F3 0F 10 0D";
             public static string ThirdPersonMask = "74 0E 44 8D 52 03";
